@@ -31,8 +31,7 @@ Before you begin, ensure you have the following installed and configured on your
         PYTHONUNBUFFERED=1 \
         MUJOCO_GL=egl \
         LANG=C.UTF-8
-
-    # ---------- System & Python tooling ----------
+    
     RUN apt-get update && \
         apt-get install -y --no-install-recommends \
             python3 python3-pip python3-dev python3-venv \
@@ -43,7 +42,6 @@ Before you begin, ensure you have the following installed and configured on your
         ln -sf /usr/bin/python3 /usr/bin/python && \
         rm -rf /var/lib/apt/lists/*
 
-    # ---------- Python packages ----------
     RUN python -m pip install --upgrade --no-cache-dir pip setuptools wheel && \
         pip install --no-cache-dir \
             "mujoco>=3.3" \
@@ -52,7 +50,6 @@ Before you begin, ensure you have the following installed and configured on your
             && \
         pip cache purge
 
-    # ---------- SSH (Optional, but included in your Dockerfile) ----------
     RUN echo "root:123123" | chpasswd && \
         sed -i 's/#\?PermitRootLogin .*/PermitRootLogin yes/'    /etc/ssh/sshd_config && \
         sed -i 's/#\?PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config && \
@@ -60,7 +57,6 @@ Before you begin, ensure you have the following installed and configured on your
         echo 'X11DisplayOffset 10'    >> /etc/ssh/sshd_config && \
         echo 'X11UseLocalhost no'     >> /etc/ssh/sshd_config
 
-    # ---------- Entrypoint ----------
     RUN printf '#!/bin/bash\nservice ssh start\nexec "$@"\n' \
         > /usr/local/bin/docker-entrypoint && \
         chmod +x /usr/local/bin/docker-entrypoint
