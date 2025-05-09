@@ -2,6 +2,8 @@
 
 This guide provides step-by-step instructions to set up a Docker environment on Windows for running Google DeepMind's MuJoCo MPC (Model Predictive Control). It utilizes a CUDA-enabled Docker image with X11 forwarding for GUI applications.
 
+<img width="874" alt="Result" src="https://github.com/user-attachments/assets/778f5664-91da-468e-af78-72e5c00734f6" />
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed and configured on your Windows machine:
