@@ -111,7 +111,7 @@ apt-get install -y \
 2. Clone the `mujoco_mpc` repository:
 
 ```bash
-git clone --recursive [https://github.com/google-deepmind/mujoco_mpc.git](https://github.com/google-deepmind/mujoco_mpc.git)
+git clone --recursive https://github.com/google-deepmind/mujoco_mpc.git
 cd mujoco_mpc
 ```
 
