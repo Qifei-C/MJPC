@@ -163,6 +163,11 @@ If your X11 forwarding (VcXsrv) and NVIDIA drivers/Docker GPU passthrough are co
 
 - `host.docker.internal` not resolving? Ensure your Docker Desktop is up to date.
 
+- ERROR: could not initialize `GLFW`:
+   - `MuJoCo` itself supports headless rendering (`OSMesa` or `EGL`), but `MJPC` (MPC GUI) itself always tries to create a `GLFW` window. MJPC never compiled the `GLFW_OSMESA` path so `glfwInit()` still tries (and fails) to connect to `X11`. Check if you had supply an X server.
+   - Use CPU test if it's a GPU Failure
+   
+
 - VcXsrv "Cannot open display":
   - Double-check VcXsrv is running.
   - Ensure "Disable access control" was checked when launching VcXsrv.
